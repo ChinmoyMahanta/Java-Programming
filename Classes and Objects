@@ -1,0 +1,106 @@
+2. Classes and Objects
+
+Q1. Create a student class with fields: name, ID, and marks. Include methods to input and
+display details.
+import java.util.Scanner;
+
+class Student {
+    String name;
+    int id;
+    double marks;
+    void inputDetails() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Name: ");
+        name = sc.nextLine();
+        System.out.print("Enter ID: ");
+        id = sc.nextInt();
+        System.out.print("Enter Marks: ");
+        marks = sc.nextDouble();
+    }
+
+    void displayDetails() {
+        System.out.println("\n--- Student Details ---");
+        System.out.println("Name: " + name);
+        System.out.println("ID: " + id);
+        System.out.println("Marks: " + marks);
+    }
+}
+
+public class StudentDemo {
+    public static void main(String[] args) {
+        Student s1 = new Student();  
+        s1.inputDetails();
+        s1.displayDetails();
+    }
+}
+
+Q2. Design a class Rectangle with length and breadth. Add a method to calculate area and
+perimeter.
+import java.util.Scanner;
+
+class Rectangle {
+    double length, breadth;
+    double area() {
+        return length * breadth;
+    }
+    double perimeter() {
+        return 2 * (length + breadth);
+    }
+}
+
+public class RectangleDemo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Rectangle rect = new Rectangle();
+
+        System.out.print("Enter length: ");
+        rect.length = sc.nextDouble();
+
+        System.out.print("Enter breadth: ");
+        rect.breadth = sc.nextDouble();
+
+        System.out.println("Area = " + rect.area());
+        System.out.println("Perimeter = " + rect.perimeter());
+    }
+}
+
+Q3. Create a class TemperatureConverter with a method that converts Celsius to Fahrenheit and
+vice versa.
+import java.util.Scanner;
+
+class TemperatureConverter {
+
+    double celsiusToFahrenheit(double celsius) {
+        return (celsius * 9 / 5) + 32;
+    }
+    double fahrenheitToCelsius(double fahrenheit) {
+        return (fahrenheit - 32) * 5 / 9;
+    }
+}
+
+public class TempDemo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        TemperatureConverter tc = new TemperatureConverter();
+
+        System.out.println("1. Celsius to Fahrenheit");
+        System.out.println("2. Fahrenheit to Celsius");
+        System.out.print("Choose option: ");
+        int choice = sc.nextInt();
+
+        switch (choice) {
+            case 1:
+                System.out.print("Enter Celsius: ");
+                double c = sc.nextDouble();
+                System.out.println("Fahrenheit = " + tc.celsiusToFahrenheit(c));
+                break;
+            case 2:
+                System.out.print("Enter Fahrenheit: ");
+                double f = sc.nextDouble();
+                System.out.println("Celsius = " + tc.fahrenheitToCelsius(f));
+                break;
+            default:
+                System.out.println("Invalid choice!");
+        }
+    }
+}
