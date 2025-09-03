@@ -1,0 +1,65 @@
+6. Packages and Access Control
+
+Q1. Create a user-defined package mathops with a class Operations having methods add (),
+subtract (). Import it into another class and use it.
+
+package mathops;
+public class Operations {
+    public int add(int a, int b) { return a + b; }
+    public int subtract(int a, int b) { return a - b; }
+}
+
+import mathops.Operations;
+public class MainTest {
+    public static void main(String[] args) {
+        Operations op = new Operations();
+        System.out.println("Add: " + op.add(10, 5));
+        System.out.println("Subtract: " + op.subtract(10, 5));
+    }
+}
+
+Q2. Show the use of all access modifiers (private, public, protected, and default) by creating
+variables and methods in different classes.
+class Demo {
+    public int pub = 10;
+    private int pri = 20;
+    protected int pro = 30;
+    int def = 40; // default
+
+    public void show() {
+        System.out.println("Public: " + pub);
+        System.out.println("Private: " + pri);
+        System.out.println("Protected: " + pro);
+        System.out.println("Default: " + def);
+    }
+}
+
+public class AccessDemo {
+    public static void main(String[] args) {
+        Demo d = new Demo();
+        d.show();
+        System.out.println("Accessing Public: " + d.pub);
+        // System.out.println(d.pri); // ❌ private - not accessible
+        System.out.println("Protected: " + d.pro); // works (same package)
+        System.out.println("Default: " + d.def);   // works (same package)
+    }
+}
+
+Q3. Create two packages: package1 with class A and package2 with class B. Access class A
+from B using import.
+
+package package1;
+public class A {
+    public void display() {
+        System.out.println("Hello from Class A in package1");
+    }
+}
+
+package package2;
+import package1.A; // importing class A
+public class B {
+    public static void main(String[] args) {
+        A obj = new A();
+        obj.display();
+    }
+}
