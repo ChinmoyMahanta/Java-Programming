@@ -1,0 +1,77 @@
+5. Abstraction and Encapsulation
+
+Q1. Create an abstract class Appliance with abstract method start(). Create concrete classes Fan
+and WashingMachine to implement it.
+abstract class Appliance {
+    abstract void start();
+}
+
+class Fan extends Appliance {
+    void start() { System.out.println("Fan is spinning..."); }
+}
+
+class WashingMachine extends Appliance {
+    void start() { System.out.println("Washing Machine is running..."); }
+}
+
+public class AbsDemo1 {
+    public static void main(String[] args) {
+        Appliance a;
+        a = new Fan(); a.start();
+        a = new WashingMachine(); a.start();
+    }
+}
+
+Q2. Create a class BankAccount with private fields (account number, balance) and provide
+public methods to access and update them using getters/setters.
+class BankAccount {
+    private String accNo;
+    private double balance;
+
+    // Constructor
+    BankAccount(String accNo, double balance) {
+        this.accNo = accNo;
+        this.balance = balance;
+    }
+
+    // Getter
+    public String getAccNo() { return accNo; }
+    public double getBalance() { return balance; }
+
+    // Setter
+    public void setBalance(double balance) { this.balance = balance; }
+}
+
+public class EncapsDemo {
+    public static void main(String[] args) {
+        BankAccount b = new BankAccount("ACC123", 5000);
+
+        System.out.println("Account No: " + b.getAccNo());
+        System.out.println("Balance: " + b.getBalance());
+
+        b.setBalance(7000); // updating balance
+        System.out.println("Updated Balance: " + b.getBalance());
+    }
+}
+
+Q3. Demonstrate how abstraction works using interfaces: Define an interface Drawable and
+implement it in Circle and Square.
+interface Drawable {
+    void draw();
+}
+
+class Circle implements Drawable {
+    public void draw() { System.out.println("Drawing a Circle"); }
+}
+
+class Square implements Drawable {
+    public void draw() { System.out.println("Drawing a Square"); }
+}
+
+public class AbsDemo2 {
+    public static void main(String[] args) {
+        Drawable d;
+        d = new Circle(); d.draw();
+        d = new Square(); d.draw();
+    }
+}
